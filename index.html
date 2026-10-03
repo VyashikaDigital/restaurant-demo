@@ -20,7 +20,7 @@ header .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:spac
 .logo{font:800 22px Fraunces,Georgia,serif;text-decoration:none}
 nav{display:flex;gap:16px;flex-wrap:wrap}
 nav a{text-decoration:none;font-size:14px;font-weight:500;opacity:.9}
-.hero{background:linear-gradient(135deg,var(--maroon2),var(--maroon));color:#fff;padding:54px 0 48px}
+.hero{background:linear-gradient(135deg,rgba(92,22,32,.9),rgba(122,31,43,.72)),url(hero.jpg) center/cover,linear-gradient(135deg,var(--maroon2),var(--maroon));color:#fff;padding:92px 0 84px}
 .hero h1{font-size:clamp(32px,6vw,54px);font-weight:800;max-width:14ch}
 .hero p{max-width:46ch;opacity:.92;margin:0 0 22px}
 .btn{display:inline-block;border:0;cursor:pointer;font:600 15px Inter,Arial,sans-serif;padding:12px 22px;border-radius:8px;background:var(--gold);color:#2a1d17;text-decoration:none;margin:4px 8px 4px 0}
@@ -61,6 +61,25 @@ footer{background:var(--maroon2);color:#e9d9c9;text-align:center;padding:26px 5%
 .tot{display:flex;justify-content:space-between;font-weight:700;font-size:18px;padding:12px 0}
 .x{float:right;background:none;border:0;font-size:26px;cursor:pointer;line-height:1}
 @media(min-width:600px){#sheet{align-items:center}.panel{border-radius:16px}}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));grid-auto-rows:170px;gap:12px;margin-top:20px}
+.gi{position:relative;margin:0;overflow:hidden;border-radius:12px;background:#4a2f22;cursor:pointer}
+.gi .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#f0dcc6;font-size:14px;background:linear-gradient(135deg,#5c1620,#2a1d17)}
+.gi .ph span{font-size:34px}
+.gi img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.gi:hover img{transform:scale(1.05)}
+@media(min-width:700px){.gi:first-child{grid-column:span 2;grid-row:span 2}}
+#lb{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.92);display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px}
+#lb.open{display:flex}
+#li{max-width:100%;max-height:78vh;border-radius:10px}
+#lc{color:#fff;margin:12px 0 0}
+#lx{position:absolute;top:12px;right:18px;background:none;border:0;color:#fff;font-size:38px;cursor:pointer}
+.facts{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.facts li{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:14px 16px}
+.facts b{display:block;font-family:Fraunces,Georgia,serif;font-size:18px}
+.facts span{color:var(--mut);font-size:14px}
+h2{font-size:clamp(26px,4vw,36px)}
+.item{transition:box-shadow .2s}
+.item:hover{box-shadow:0 6px 18px rgba(122,31,43,.12)}
 :focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 </style>
 </head>
@@ -68,7 +87,7 @@ footer{background:var(--maroon2);color:#e9d9c9;text-align:center;padding:26px 5%
 <div class="demo">This is a demo website made by Vyashika Digital. Orders and bookings open WhatsApp so you can test them.</div>
 <header><div class="wrap">
   <a class="logo" href="#top">Saryu Kitchen</a>
-  <nav><a href="#menu">Menu</a><a href="#book">Book a table</a><a href="#contact">Contact</a></nav>
+  <nav><a href="#about">About</a><a href="#menu">Menu</a><a href="#gallery">Gallery</a><a href="#book">Book a table</a><a href="#contact">Contact</a></nav>
 </div></header>
 
 <div class="hero" id="top"><div class="wrap">
@@ -83,6 +102,45 @@ footer{background:var(--maroon2);color:#e9d9c9;text-align:center;padding:26px 5%
   <div class="tabs" id="tabs" role="tablist"></div>
   <div id="list"></div>
 </div></section>
+
+<section id="gallery" style="background:#2a1d17;color:#fff"><div class="wrap">
+  <h2 style="color:#fff">A look inside</h2>
+  <p style="color:#d9c8b8;max-width:52ch">Warm lighting, comfortable seating and an open kitchen. Tap a photo to see it bigger.</p>
+  <div class="gal">
+    <figure class="gi"><div class="ph"><span>🏛️</span>Dining hall</div><img src="g1.jpg" alt="Dining hall" loading="lazy" onerror="this.remove()"></figure>
+    <figure class="gi"><div class="ph"><span>🛋️</span>Family seating</div><img src="g2.jpg" alt="Family seating" loading="lazy" onerror="this.remove()"></figure>
+    <figure class="gi"><div class="ph"><span>👨‍🍳</span>Open kitchen</div><img src="g3.jpg" alt="Open kitchen" loading="lazy" onerror="this.remove()"></figure>
+    <figure class="gi"><div class="ph"><span>🚪</span>Entrance</div><img src="g4.jpg" alt="Entrance" loading="lazy" onerror="this.remove()"></figure>
+    <figure class="gi"><div class="ph"><span>🍽️</span>Saryu Special Thali</div><img src="g5.jpg" alt="Saryu Special Thali" loading="lazy" onerror="this.remove()"></figure>
+    <figure class="gi"><div class="ph"><span>🧀</span>Paneer Tikka</div><img src="g6.jpg" alt="Paneer Tikka" loading="lazy" onerror="this.remove()"></figure>
+    <figure class="gi"><div class="ph"><span>🍮</span>Desserts</div><img src="g7.jpg" alt="Desserts" loading="lazy" onerror="this.remove()"></figure>
+    <figure class="gi"><div class="ph"><span>🎉</span>Party area</div><img src="g8.jpg" alt="Private party area" loading="lazy" onerror="this.remove()"></figure>
+  </div>
+</div></section>
+
+<section id="about"><div class="wrap two">
+  <div><h2>Home style food, restaurant care</h2>
+    <p style="color:var(--mut)">Saryu Kitchen is a pure vegetarian restaurant for families, pilgrims and office groups. Our masalas are ground fresh and every dish is cooked to order.</p>
+    <p style="color:var(--mut)">Come for a quick thali at lunch or a relaxed dinner with family. Order from your phone and we have it ready.</p></div>
+  <ul class="facts">
+    <li><b>100% pure vegetarian</b><span>No egg, no onion-garlic on request</span></li>
+    <li><b>Family seating</b><span>Comfortable for groups up to 12</span></li>
+    <li><b>Open every day</b><span>11:00 am to 10:30 pm</span></li>
+    <li><b>Order on WhatsApp</b><span>Dine-in, takeaway or home delivery</span></li>
+  </ul>
+</div></section>
+
+<section style="background:#fff7e8"><div class="wrap">
+  <h2>What guests say</h2>
+  <p style="color:var(--mut);font-size:13px">Sample reviews for this demo.</p>
+  <div class="grid">
+    <div class="card"><p>The thali is filling and the dal makhani tastes homemade. Service was quick.</p><b>Rohit S.</b></div>
+    <div class="card"><p>Booked a table on WhatsApp in a minute. Our family dinner was easy and relaxed.</p><b>Neha G.</b></div>
+    <div class="card"><p>Paneer tikka and rabri jalebi are the best here. Clean place and polite staff.</p><b>Amit K.</b></div>
+  </div>
+</div></section>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer"><button id="lx" type="button" aria-label="Close photo">&times;</button><img id="li" alt=""><p id="lc"></p></div>
 
 <section id="book" style="background:#f8ecd6"><div class="wrap two">
   <div><h2>Book a table</h2><p style="color:var(--mut)">Fill the form and tap the button. Your request opens in WhatsApp and we confirm it there.</p></div>
@@ -230,6 +288,9 @@ $("tel").textContent=CFG.phone;$("tel").href="tel:"+CFG.phone.replace(/\s/g,"");
 $("em").textContent=CFG.email;$("em").href="mailto:"+CFG.email;
 var link="https://wa.me/"+CFG.wa+"?text="+encodeURIComponent("Hello, I have a question about "+CFG.name);
 $("ca").href=link;$("wa").href=link;
+document.querySelectorAll(".gi").forEach(function(f){f.addEventListener("click",function(){var im=f.querySelector("img");if(!im)return;$("li").src=im.src;$("li").alt=im.alt;$("lc").textContent=im.alt;$("lb").classList.add("open")})});
+$("lb").addEventListener("click",function(){this.classList.remove("open")});
+document.addEventListener("keydown",function(e){if(e.key==="Escape"){$("lb").classList.remove("open");closeSheet()}});
 tabs();list();bar();
 </script>
 </body>
