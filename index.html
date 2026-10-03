@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saryu Kitchen - Pure Veg Restaurant, Ayodhya (Demo)</title>
+<meta name="description" content="Order food and book a table on WhatsApp. Demo restaurant website by Vyashika Digital.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--maroon:#7a1f2b;--maroon2:#5c1620;--gold:#e8a317;--bg:#fffdf8;--card:#fff;--line:#eadfce;--tx:#2a1d17;--mut:#6f5f55}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 Inter,Arial,sans-serif;padding-bottom:70px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;margin:0 0 8px;line-height:1.2}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 5%}
+.demo{background:var(--gold);color:#2a1d17;text-align:center;font-size:13px;font-weight:600;padding:6px 10px}
+header{background:var(--maroon);color:#fff;position:sticky;top:0;z-index:20}
+header .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 18px;padding-top:12px;padding-bottom:12px}
+.logo{font:800 22px Fraunces,Georgia,serif;text-decoration:none}
+nav{display:flex;gap:16px;flex-wrap:wrap}
+nav a{text-decoration:none;font-size:14px;font-weight:500;opacity:.9}
+.hero{background:linear-gradient(135deg,var(--maroon2),var(--maroon));color:#fff;padding:54px 0 48px}
+.hero h1{font-size:clamp(32px,6vw,54px);font-weight:800;max-width:14ch}
+.hero p{max-width:46ch;opacity:.92;margin:0 0 22px}
+.btn{display:inline-block;border:0;cursor:pointer;font:600 15px Inter,Arial,sans-serif;padding:12px 22px;border-radius:8px;background:var(--gold);color:#2a1d17;text-decoration:none;margin:4px 8px 4px 0}
+.btn.o{background:none;border:1px solid #fff;color:#fff}
+.btn.g{background:#25d366;color:#04200e;width:100%;margin:6px 0 0}
+section{padding:40px 0}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;-webkit-overflow-scrolling:touch}
+.tab{flex:none;border:1px solid var(--line);background:#fff;color:var(--tx);padding:8px 16px;border-radius:20px;font:500 14px Inter,Arial,sans-serif;cursor:pointer}
+.tab.on{background:var(--maroon);border-color:var(--maroon);color:#fff}
+#q{width:100%;padding:11px 14px;border:1px solid var(--line);border-radius:8px;font:16px Inter,Arial,sans-serif;margin-bottom:10px}
+.cat{margin:22px 0 8px;font-size:22px;color:var(--maroon)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px}
+.item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;gap:12px;align-items:center}
+.em{flex:none;width:58px;height:58px;border-radius:12px;background:#f8ecd6;display:grid;place-items:center;font-size:30px}
+.info{flex:1;min-width:0}
+.info b{display:block;font-size:16px}
+.info small{color:var(--mut);display:block;line-height:1.35}
+.pr{font-weight:700;color:var(--maroon);margin-top:2px}
+.qty{display:flex;align-items:center;gap:8px;flex:none}
+.qty button{width:32px;height:32px;border-radius:8px;border:1px solid var(--maroon);background:#fff;color:var(--maroon);font-size:18px;cursor:pointer;line-height:1}
+.add{border:1px solid var(--maroon);background:#fff;color:var(--maroon);font-weight:600;padding:7px 16px;border-radius:8px;cursor:pointer}
+.none{color:var(--mut);padding:20px 0}
+form label{display:block;font-size:14px;font-weight:600;margin:12px 0 4px}
+form input,form select,form textarea{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:8px;font:16px Inter,Arial,sans-serif;background:#fff}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px}
+.err{color:#b3261e;font-size:14px;min-height:20px;margin-top:6px}
+iframe{width:100%;height:240px;border:0;border-radius:12px}
+footer{background:var(--maroon2);color:#e9d9c9;text-align:center;padding:26px 5%;font-size:14px}
+#bar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--maroon);color:#fff;display:none;justify-content:space-between;align-items:center;padding:12px 5%;font-weight:600;cursor:pointer;border:0;width:100%;font:600 16px Inter,Arial,sans-serif}
+#bar.show{display:flex}
+#wa{position:fixed;right:14px;bottom:78px;z-index:25;background:#25d366;color:#04200e;font-weight:700;padding:12px 16px;border-radius:30px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+#sheet{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.55);display:none;align-items:flex-end;justify-content:center}
+#sheet.open{display:flex}
+.panel{background:#fff;width:100%;max-width:560px;max-height:92vh;overflow:auto;border-radius:16px 16px 0 0;padding:20px}
+.ln{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:15px}
+.tot{display:flex;justify-content:space-between;font-weight:700;font-size:18px;padding:12px 0}
+.x{float:right;background:none;border:0;font-size:26px;cursor:pointer;line-height:1}
+@media(min-width:600px){#sheet{align-items:center}.panel{border-radius:16px}}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="demo">This is a demo website made by Vyashika Digital. Orders and bookings open WhatsApp so you can test them.</div>
+<header><div class="wrap">
+  <a class="logo" href="#top">Saryu Kitchen</a>
+  <nav><a href="#menu">Menu</a><a href="#book">Book a table</a><a href="#contact">Contact</a></nav>
+</div></header>
+
+<div class="hero" id="top"><div class="wrap">
+  <h1>Pure veg food, cooked fresh in Ayodhya</h1>
+  <p>Choose your dishes, send your order on WhatsApp, or book a table in a minute. No app, no sign-up.</p>
+  <a class="btn" href="#menu">Order food</a><a class="btn o" href="#book">Book a table</a>
+</div></div>
+
+<section id="menu"><div class="wrap">
+  <h2>Our menu</h2>
+  <input id="q" type="search" placeholder="Search a dish, e.g. paneer" aria-label="Search dishes">
+  <div class="tabs" id="tabs" role="tablist"></div>
+  <div id="list"></div>
+</div></section>
+
+<section id="book" style="background:#f8ecd6"><div class="wrap two">
+  <div><h2>Book a table</h2><p style="color:var(--mut)">Fill the form and tap the button. Your request opens in WhatsApp and we confirm it there.</p></div>
+  <form class="card" id="bf" novalidate>
+    <label for="bn">Your name</label><input id="bn" autocomplete="name">
+    <label for="bp">Mobile number</label><input id="bp" inputmode="numeric" maxlength="10" autocomplete="tel" placeholder="10 digit number">
+    <div class="row"><div><label for="bd">Date</label><input id="bd" type="date"></div><div><label for="bt">Time</label><input id="bt" type="time" value="19:30"></div></div>
+    <label for="bg">Number of guests</label><select id="bg"></select>
+    <label for="bo">Note (optional)</label><textarea id="bo" rows="2" placeholder="Birthday, high chair, window seat..."></textarea>
+    <div class="err" id="be" role="alert"></div>
+    <button class="btn g" type="submit">Send booking on WhatsApp</button>
+  </form>
+</div></section>
+
+<section id="contact"><div class="wrap two">
+  <div class="card"><h2>Visit us</h2>
+    <p><b>Address:</b><br><span id="ad"></span></p>
+    <p><b>Open:</b> Every day, 11:00 am - 10:30 pm</p>
+    <p><b>Call:</b> <a id="tel" href="#"></a><br><b>Email:</b> <a id="em" href="#"></a></p>
+    <a class="btn g" id="ca" target="_blank" rel="noopener" href="#">Chat on WhatsApp</a>
+  </div>
+  <iframe loading="lazy" title="Map" src="https://www.google.com/maps?q=Milkipur,Ayodhya,Uttar+Pradesh+224121&amp;output=embed"></iframe>
+</div></section>
+
+<footer>Demo restaurant website designed and built by <b>Vyashika Digital</b>, Ayodhya. Want a website like this for your restaurant? Message us on WhatsApp.</footer>
+
+<a id="wa" target="_blank" rel="noopener" href="#">WhatsApp</a>
+<button id="bar" type="button"><span id="bc"></span><span id="bt2"></span></button>
+
+<div id="sheet" role="dialog" aria-modal="true" aria-label="Your order"><div class="panel">
+  <button class="x" id="xc" aria-label="Close">&times;</button>
+  <h2>Your order</h2>
+  <div id="lines"></div>
+  <div class="tot"><span>Total</span><span id="tt"></span></div>
+  <form id="of" novalidate>
+    <label for="on">Your name</label><input id="on" autocomplete="name">
+    <label for="op">Mobile number</label><input id="op" inputmode="numeric" maxlength="10" autocomplete="tel" placeholder="10 digit number">
+    <label for="ot">Order type</label>
+    <select id="ot"><option>Dine-in</option><option>Takeaway</option><option>Home delivery</option></select>
+    <div id="adw" style="display:none"><label for="oa">Delivery address</label><textarea id="oa" rows="2"></textarea></div>
+    <label for="oo">Note for the kitchen (optional)</label><input id="oo" placeholder="Less spicy, no onion...">
+    <div class="err" id="oe" role="alert"></div>
+    <button class="btn g" type="submit">Send order on WhatsApp</button>
+  </form>
+</div></div>
+
+<script>
+/* ===== Change these for each client ===== */
+var CFG={name:"Saryu Kitchen",wa:"919555083044",phone:"+91 95550 83044",email:"vyashikadigital@gmail.com",address:"Milkipur, Ayodhya, Uttar Pradesh - 224121"};
+var MENU=[
+{c:"Starters",n:"Paneer Tikka",p:220,d:"Charred paneer, mint chutney",e:"🧀"},
+{c:"Starters",n:"Veg Spring Roll",p:140,d:"Crisp rolls, sweet chilli dip",e:"🌯"},
+{c:"Starters",n:"Hara Bhara Kabab",p:160,d:"Spinach and peas patties",e:"🥬"},
+{c:"Main course",n:"Shahi Paneer",p:240,d:"Creamy tomato and cashew gravy",e:"🍛"},
+{c:"Main course",n:"Dal Makhani",p:200,d:"Slow cooked black lentils",e:"🥘"},
+{c:"Main course",n:"Kadai Veg",p:210,d:"Seasonal veg with kadai masala",e:"🥕"},
+{c:"Main course",n:"Chole Masala",p:180,d:"Chickpeas in spiced gravy",e:"🫘"},
+{c:"Breads and rice",n:"Butter Naan",p:45,d:"Soft tandoor naan",e:"🫓"},
+{c:"Breads and rice",n:"Tawa Roti",p:15,d:"Fresh wheat roti",e:"🫓"},
+{c:"Breads and rice",n:"Jeera Rice",p:120,d:"Basmati rice with cumin",e:"🍚"},
+{c:"Breads and rice",n:"Veg Biryani",p:200,d:"Fragrant rice, raita on the side",e:"🍲"},
+{c:"Thali",n:"Saryu Special Thali",p:299,d:"2 sabzi, dal, rice, 3 roti, sweet",e:"🍽️"},
+{c:"Thali",n:"Mini Thali",p:199,d:"1 sabzi, dal, rice, 2 roti",e:"🍽️"},
+{c:"Desserts",n:"Gulab Jamun (2 pcs)",p:70,d:"Warm, soaked in syrup",e:"🍮"},
+{c:"Desserts",n:"Rabri Jalebi",p:110,d:"Hot jalebi with thick rabri",e:"🥨"},
+{c:"Drinks",n:"Masala Chai",p:25,d:"Ginger and cardamom",e:"🍵"},
+{c:"Drinks",n:"Sweet Lassi",p:70,d:"Thick curd lassi",e:"🥛"},
+{c:"Drinks",n:"Fresh Lime Soda",p:60,d:"Sweet or salted",e:"🍋"}
+];
+MENU.forEach(function(m,i){m.id=i});
+var cart={},cat="All",$=function(i){return document.getElementById(i)};
+function rs(n){return "\u20B9"+n}
+function cats(){var a=["All"];MENU.forEach(function(m){if(a.indexOf(m.c)<0)a.push(m.c)});return a}
+function tabs(){$("tabs").innerHTML=cats().map(function(c){return '<button class="tab'+(c===cat?' on':'')+'" data-c="'+c+'">'+c+'</button>'}).join("")}
+function qtyHtml(id){var q=cart[id]||0;return q?'<div class="qty"><button data-s="'+id+'" aria-label="Remove one">&minus;</button><b>'+q+'</b><button data-a="'+id+'" aria-label="Add one">+</button></div>':'<button class="add" data-a="'+id+'">Add</button>'}
+function list(){
+  var t=$("q").value.toLowerCase().trim(),h="",last="";
+  MENU.forEach(function(m){
+    if(cat!=="All"&&m.c!==cat)return;
+    if(t&&(m.n+" "+m.d).toLowerCase().indexOf(t)<0)return;
+    if(m.c!==last){last=m.c;h+='<h3 class="cat">'+m.c+'</h3><div class="grid">'}
+    h+='<div class="item"><div class="em" aria-hidden="true">'+m.e+'</div><div class="info"><b>'+m.n+'</b><small>'+m.d+'</small><div class="pr">'+rs(m.p)+'</div></div><div id="q'+m.id+'">'+qtyHtml(m.id)+'</div></div>';
+    var nx=MENU[m.id+1];
+    if(!nx||nx.c!==m.c||(cat!=="All"&&nx.c!==cat))h+='</div>';
+  });
+  $("list").innerHTML=h||'<p class="none">No dish found. Try another word.</p>';
+}
+function count(){var c=0,t=0;MENU.forEach(function(m){var q=cart[m.id]||0;c+=q;t+=q*m.p});return{c:c,t:t}}
+function bar(){var s=count();$("bar").className=s.c?"show":"";$("bc").textContent="View order ("+s.c+" item"+(s.c>1?"s":"")+")";$("bt2").textContent=rs(s.t)}
+function change(id,d){cart[id]=Math.max(0,(cart[id]||0)+d);if(!cart[id])delete cart[id];var e=$("q"+id);if(e)e.innerHTML=qtyHtml(id);bar();if($("sheet").classList.contains("open"))lines()}
+function lines(){
+  var h="";MENU.forEach(function(m){var q=cart[m.id];if(q)h+='<div class="ln"><span>'+m.n+' x '+q+'</span><span>'+rs(q*m.p)+'</span></div>'});
+  $("lines").innerHTML=h||'<p class="none">Your order is empty.</p>';$("tt").textContent=rs(count().t);
+  if(!count().c)closeSheet();
+}
+function openSheet(){lines();$("sheet").classList.add("open")}
+function closeSheet(){$("sheet").classList.remove("open")}
+function wa(msg){window.open("https://wa.me/"+CFG.wa+"?text="+encodeURIComponent(msg),"_blank")}
+function okPhone(v){return /^[6-9]\d{9}$/.test(v)}
+document.addEventListener("click",function(e){
+  var t=e.target;
+  if(t.dataset.c){cat=t.dataset.c;tabs();list()}
+  if(t.dataset.a)change(+t.dataset.a,1);
+  if(t.dataset.s)change(+t.dataset.s,-1);
+  if(t.id==="sheet"||t.id==="xc")closeSheet();
+});
+$("q").addEventListener("input",list);
+$("bar").addEventListener("click",openSheet);
+$("ot").addEventListener("change",function(){$("adw").style.display=this.value==="Home delivery"?"block":"none"});
+$("of").addEventListener("submit",function(e){
+  e.preventDefault();
+  var n=$("on").value.trim(),p=$("op").value.trim(),ty=$("ot").value,a=$("oa").value.trim();
+  if(!count().c){$("oe").textContent="Please add at least one dish.";return}
+  if(n.length<2){$("oe").textContent="Please enter your name.";return}
+  if(!okPhone(p)){$("oe").textContent="Please enter a valid 10 digit mobile number.";return}
+  if(ty==="Home delivery"&&a.length<5){$("oe").textContent="Please enter your delivery address.";return}
+  $("oe").textContent="";
+  var m="New order - "+CFG.name+"\n\n";
+  MENU.forEach(function(x){var q=cart[x.id];if(q)m+=q+" x "+x.n+" = "+rs(q*x.p)+"\n"});
+  m+="\nTotal: "+rs(count().t)+"\nType: "+ty+"\nName: "+n+"\nMobile: "+p;
+  if(ty==="Home delivery")m+="\nAddress: "+a;
+  if($("oo").value.trim())m+="\nNote: "+$("oo").value.trim();
+  wa(m);
+});
+(function(){
+  var g="";for(var i=1;i<=12;i++)g+="<option>"+i+(i===1?" guest":" guests")+"</option>";
+  $("bg").innerHTML=g;$("bg").selectedIndex=3;
+  var d=new Date(),z=function(x){return(x<10?"0":"")+x};
+  var today=d.getFullYear()+"-"+z(d.getMonth()+1)+"-"+z(d.getDate());
+  $("bd").min=today;$("bd").value=today;
+})();
+$("bf").addEventListener("submit",function(e){
+  e.preventDefault();
+  var n=$("bn").value.trim(),p=$("bp").value.trim(),d=$("bd").value,t=$("bt").value;
+  if(n.length<2){$("be").textContent="Please enter your name.";return}
+  if(!okPhone(p)){$("be").textContent="Please enter a valid 10 digit mobile number.";return}
+  if(!d||!t){$("be").textContent="Please choose a date and time.";return}
+  $("be").textContent="";
+  var m="Table booking request - "+CFG.name+"\n\nName: "+n+"\nMobile: "+p+"\nDate: "+d+"\nTime: "+t+"\nGuests: "+$("bg").value;
+  if($("bo").value.trim())m+="\nNote: "+$("bo").value.trim();
+  wa(m);
+});
+$("ad").textContent=CFG.address;
+$("tel").textContent=CFG.phone;$("tel").href="tel:"+CFG.phone.replace(/\s/g,"");
+$("em").textContent=CFG.email;$("em").href="mailto:"+CFG.email;
+var link="https://wa.me/"+CFG.wa+"?text="+encodeURIComponent("Hello, I have a question about "+CFG.name);
+$("ca").href=link;$("wa").href=link;
+tabs();list();bar();
+</script>
+</body>
+</html>
